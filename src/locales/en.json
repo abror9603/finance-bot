@@ -1,0 +1,58 @@
+{
+  "test": "test",
+  "welcome": {
+    "title": "Hello! 👋",
+    "description": "I'm your personal finance assistant.\n\nTogether we will:\n✅ Control your expenses\n✅ Achieve savings goals\n✅ Achieve financial freedom",
+    "choose_language": "Please choose a language:",
+    "language_set": "✅ Language set to English"
+  },
+  "menu": {
+    "main": "Main menu:",
+    "add_expense": "💸 Add Expense",
+    "add_income": "💰 Add Income",
+    "statistics": "📊 Statistics",
+    "goals": "🎯 Goals",
+    "budget": "📋 Budget",
+    "settings": "⚙️ Settings"
+  },
+  "settings": {
+    "title": "⚙️ Settings",
+    "language": "🌍 Language",
+    "currency": "💱 Currency",
+    "notifications": "🔔 Notifications",
+    "change_language": "Change language",
+    "language_changed": "✅ Language successfully changed!"
+  },
+  "expense": {
+    "add": "Enter amount and category:\n\nExample: 50000 food",
+    "added": "✅ Expense added!\n\n💸 {amount} UZS - {category}\n📅 {date}",
+    "categories": {
+      "food": "🍔 Food",
+      "transport": "🚗 Transport",
+      "utilities": "🏠 Utilities",
+      "entertainment": "🎮 Entertainment",
+      "health": "💊 Health",
+      "education": "📚 Education",
+      "shopping": "🛍 Shopping",
+      "other": "📦 Other"
+    }
+  },
+  "stats": {
+    "title": "📊 Statistics",
+    "today": "Today",
+    "week": "Week",
+    "month": "Month",
+    "total_expense": "💸 Total expenses: {amount} UZS",
+    "total_income": "💰 Total income: {amount} UZS",
+    "balance": "💵 Balance: {amount} UZS"
+  },
+  "errors": {
+    "invalid_format": "❌ Invalid format!\n\nCorrect: 50000 food",
+    "server_error": "❌ An error occurred. Please try again."
+  },
+  "buttons": {
+    "back": "◀️ Back",
+    "cancel": "❌ Cancel",
+    "confirm": "✅ Confirm"
+  }
+}

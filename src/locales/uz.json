@@ -1,0 +1,57 @@
+{
+  "welcome": {
+    "title": "Assalomu alaykum! 👋",
+    "description": "Men sizning shaxsiy moliya yordamchingizman.\n\nBirgalikda:\n✅ Xarajatlaringizni nazorat qilamiz\n✅ Jamg'arish maqsadlariga erishamiz\n✅ Moliyaviy erkinlikka erishamiz",
+    "choose_language": "Iltimos, tilni tanlang:",
+    "language_set": "✅ Til o'zbekcha ga o'rnatildi"
+  },
+  "menu": {
+    "main": "Asosiy menyu:",
+    "add_expense": "💸 Xarajat qo'shish",
+    "add_income": "💰 Daromad qo'shish",
+    "statistics": "📊 Statistika",
+    "goals": "🎯 Maqsadlar",
+    "budget": "📋 Byudjet",
+    "settings": "⚙️ Sozlamalar"
+  },
+  "settings": {
+    "title": "⚙️ Sozlamalar",
+    "language": "🌍 Til",
+    "currency": "💱 Valyuta",
+    "notifications": "🔔 Bildirishnomalar",
+    "change_language": "Tilni o'zgartirish",
+    "language_changed": "✅ Til muvaffaqiyatli o'zgartirildi!"
+  },
+  "expense": {
+    "add": "Xarajat summasini va kategoriyasini kiriting:\n\nMasalan: 50000 oziq-ovqat",
+    "added": "✅ Xarajat qo'shildi!\n\n💸 {amount} so'm - {category}\n📅 {date}",
+    "categories": {
+      "food": "🍔 Oziq-ovqat",
+      "transport": "🚗 Transport",
+      "utilities": "🏠 Kommunal",
+      "entertainment": "🎮 O'yin-kulgi",
+      "health": "💊 Sog'liq",
+      "education": "📚 Ta'lim",
+      "shopping": "🛍 Xarid",
+      "other": "📦 Boshqa"
+    }
+  },
+  "stats": {
+    "title": "📊 Statistika",
+    "today": "Bugun",
+    "week": "Hafta",
+    "month": "Oy",
+    "total_expense": "💸 Jami xarajat: {amount} so'm",
+    "total_income": "💰 Jami daromad: {amount} so'm",
+    "balance": "💵 Balans: {amount} so'm"
+  },
+  "errors": {
+    "invalid_format": "❌ Noto'g'ri format!\n\nTo'g'ri: 50000 oziq-ovqat",
+    "server_error": "❌ Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring."
+  },
+  "buttons": {
+    "back": "◀️ Orqaga",
+    "cancel": "❌ Bekor qilish",
+    "confirm": "✅ Tasdiqlash"
+  }
+}
