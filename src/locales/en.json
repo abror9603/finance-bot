@@ -23,9 +23,13 @@
     "change_language": "Change language",
     "language_changed": "✅ Language successfully changed!"
   },
+  
   "expense": {
-    "add": "Enter amount and category:\n\nExample: 50000 food",
-    "added": "✅ Expense added!\n\n💸 {amount} UZS - {category}\n📅 {date}",
+    "add": "Enter the expense amount and category:\n\nExample: 50000 food\n\nOr simply: 50000",
+    "added": "✅ *Expense added!*\n\n💸 *Amount:* {{amount}} UZS\n📂 *Category:* {{category}}\n📅 *Date:* {{date}}\n\n📊 *Today's total expenses:* {{todayTotal}} UZS",
+    "enter_amount": "Enter the expense amount:",
+    "invalid_amount": "❌ Invalid amount! Please enter numbers only.\n\nExample: 50000",
+    "choose_category": "Choose a category:",
     "categories": {
       "food": "🍔 Food",
       "transport": "🚗 Transport",
@@ -36,6 +40,10 @@
       "shopping": "🛍 Shopping",
       "other": "📦 Other"
     }
+  },
+  "income": {
+    "add": "Enter the income amount:\n\nExample: 1000000",
+    "added": "✅ *Income added!*\n\n💰 *Amount:* {{amount}} UZS\n📅 *Date:* {{date}}"
   },
   "stats": {
     "title": "📊 Statistics",

@@ -120,4 +120,4 @@ class TransactionService {
   }
 }
 
-module.exports = new Transaction();
+module.exports = new TransactionService();

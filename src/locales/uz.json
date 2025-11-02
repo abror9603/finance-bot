@@ -23,8 +23,11 @@
     "language_changed": "✅ Til muvaffaqiyatli o'zgartirildi!"
   },
   "expense": {
-    "add": "Xarajat summasini va kategoriyasini kiriting:\n\nMasalan: 50000 oziq-ovqat",
-    "added": "✅ Xarajat qo'shildi!\n\n💸 {amount} so'm - {category}\n📅 {date}",
+    "add": "Xarajat summasini va kategoriyasini kiriting:\n\nMasalan: 50000 oziq-ovqat\n\nYoki shunchaki: 50000",
+    "added": "✅ *Xarajat qo'shildi!*\n\n💸 *Summa:* {{amount}} so'm\n📂 *Kategoriya:* {{category}}\n📅 *Sana:* {{date}}\n\n📊 *Bugungi xarajat:* {{todayTotal}} so'm",
+    "enter_amount": "Xarajat summasini kiriting:",
+    "invalid_amount": "❌ Noto'g'ri summa! Faqat raqam kiriting.\n\nMasalan: 50000",
+    "choose_category": "Kategoriyani tanlang:",
     "categories": {
       "food": "🍔 Oziq-ovqat",
       "transport": "🚗 Transport",
@@ -35,6 +38,10 @@
       "shopping": "🛍 Xarid",
       "other": "📦 Boshqa"
     }
+  },
+  "income": {
+    "add": "Daromad summasini kiriting:\n\nMasalan: 1000000",
+    "added": "✅ *Daromad qo'shildi!*\n\n💰 *Summa:* {{amount}} so'm\n📅 *Sana:* {{date}}"
   },
   "stats": {
     "title": "📊 Statistika",

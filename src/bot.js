@@ -5,6 +5,8 @@ const {
   getMainMenuKeyboard,
   getSettingsKeyboard 
 } = require('./keyboards/language');
+const transactionService = require('./services/transactionService');
+const { getCategoryName } = require('./utils/categories');
 
 const bot = new Bot(process.env.BOT_TOKEN);
 
@@ -173,14 +175,21 @@ bot.hears([/⚙️ Sozlamalar/, /⚙️ Настройки/, /⚙️ Settings/],
 // Statistika tugmasi
 bot.hears([/📊 Statistika/, /📊 Статистика/, /📊 Statistics/], async (ctx) => {
   try {
-    const message = `${ctx.t('stats.title')}\n\n` +
-      `${ctx.t('stats.total_expense', { amount: '0' })}\n` +
-      `${ctx.t('stats.total_income', { amount: '0' })}\n` +
-      `${ctx.t('stats.balance', { amount: '0' })}`;
+    const todayStats = await transactionService.getTodayStats(ctx.from.id);
     
-    await ctx.reply(message);
+    const message = `📊 *${ctx.t('stats.title')}*\n\n` +
+      `📅 *${ctx.t('stats.today')}:*\n` +
+      `${ctx.t('stats.total_expense', { amount: todayStats.expense.toLocaleString('uz-UZ') })}\n` +
+      `${ctx.t('stats.total_income', { amount: todayStats.income.toLocaleString('uz-UZ') })}\n` +
+      `${ctx.t('stats.balance', { amount: todayStats.balance.toLocaleString('uz-UZ') })}\n\n` +
+      `📝 *Tranzaksiyalar:* ${todayStats.expenseCount} ta xarajat, ${todayStats.incomeCount} ta daromad`;
+    
+    await ctx.reply(message, {
+      parse_mode: 'Markdown'
+    });
   } catch (error) {
     console.error('❌ Stats handler error:', error);
+    await ctx.reply(ctx.t('errors.server_error'));
   }
 });
 
@@ -188,10 +197,85 @@ bot.hears([/📊 Statistika/, /📊 Статистика/, /📊 Statistics/], a
 bot.hears([/💸 Xarajat qo'shish/, /💸 Добавить расход/, /💸 Add Expense/], async (ctx) => {
   try {
     await ctx.reply(ctx.t('expense.add'));
+    
   } catch (error) {
     console.error('❌ Add expense handler error:', error);
   }
 });
+
+
+// Daromad qo'shish tugmasi
+bot.hears([/💰 Daromad qo'shish/, /💰 Добавить доход/, /💰 Add Income/], async (ctx) => {
+  try {
+    await ctx.reply(ctx.t('income.add'));
+  } catch (error) {
+    console.error('❌ Add income button error:', error);
+  }
+})
+
+// Xarajat/Daromad kiritish - TEXT HANDLER
+bot.hears('message:text', async (ctx) => {
+  try {
+    const text = ctx.message.text.trim();
+
+
+    // Agar buyruq yoki tugma bo'lsa, skip qilamiz
+    if(text.startsWith('/') || text.includes('📊') || text.includes('⚙️')){
+      return;
+    }
+
+    console.log('📝 Processing text:', text);
+
+    // Pattern: "50000 oziq-ovqat" yoki "50000"
+    const match = text.match(/^(\d+)\s*(.*)$/)
+
+    if(!match){
+      await ctx.reply(ctx.t('expense.invalid_amount'));
+      return;
+    }
+
+    const amount = parseInt(match[1]);
+    const categoryText = match[2] || 'boshqa';
+
+    const result = transactionService.addExpense(
+      ctx.from.id,
+      amount,
+      categoryText
+    )
+
+     // Bugungi statistika
+    const todayStats = await transactionService.getTodayStats(ctx.from.id);
+    
+    // Kategoriya nomini olish
+    const categoryName = getCategoryName(result.category, ctx.lang);
+    
+    // Sana formatlash
+    const date = new Date().toLocaleDateString('uz-UZ', {
+      day: 'numeric',
+      month: 'long',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    
+    // Tasdiqlov xabari
+    const message = ctx.t('expense.added', {
+      amount: amount.toLocaleString('uz-UZ'),
+      category: categoryName,
+      date: date,
+      todayTotal: todayStats.expense.toLocaleString('uz-UZ')
+    });
+    
+    await ctx.reply(message, {
+      parse_mode: 'Markdown'
+    });
+    
+    console.log(`✅ Expense added: ${amount} (${result.category})`);
+    
+  } catch (error) {
+    console.error('❌ Text handler error:', error);
+    await ctx.reply(ctx.t('errors.server_error'))
+  }
+})
 
 // ==================== ERROR HANDLER ====================
 
